@@ -1,10 +1,12 @@
 NAME	= fractol
-SRCS	= main.c
+SRCS	= src/main.c \
+		src/fractol.c
 
 OBJS	= $(SRCS:.c=.o)
 HEADERS	= fractol.h
 CC	= cc
 CFLAGS	= -Wall -Wextra -Werror -O2
+LIBFT	= ../libft/libft.a
 
 MINILIBX_URL := https://cdn.intra.42.fr/document/document/28352/minilibx-linux.tgz
 MINILIBX_TAR_GZ := minilibx-linux.tgz
@@ -18,6 +20,7 @@ LIBS = -lm -lmlx
 all: $(NAME)
 
 $(NAME): $(MINILIBX) $(OBJS)
+	cd "$(PWD)/../libft" && make && cd ..
 	$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c $(HEADERS)
@@ -31,10 +34,12 @@ $(MINILIBX): $(MINILIBX_TAR_GZ)
 	make -C $(MINILIBX_DIR)
 
 clean:
+	cd "$(PWD)/../libft" && make clean && cd ..
 	rm -f $(OBJS)
 	make -C $(MINILIBX_DIR) clean
 
 fclean: clean
+	cd "$(PWD)/../libft" && make fclean && cd ..
 	rm -f $(NAME)
 	rm -rf $(MINILIBX_DIR)
 	rm $(MINILIBX_TAR_GZ)

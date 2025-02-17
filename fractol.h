@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include <X11/keysym.h>
 #include "minilibx-linux/mlx.h"
+# include "../libft/libft.h"
 
-#define WIDTH 1920
-#define HEIGHT 1080
+#define WIDTH 1920 / 2
+#define HEIGHT 1080 / 2
 #define MAXITER 1000
 
 enum {
@@ -37,3 +38,8 @@ typedef struct	s_complex {
 	double	re;
 	double	im;
 }			t_complex;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		render_next_frame(t_vars *vars);
+int		close_window(t_vars *vars);
+int		key_hook(int keycode, t_vars *vars);

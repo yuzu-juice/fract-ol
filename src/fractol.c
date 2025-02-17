@@ -1,4 +1,4 @@
-#include "fractol.h"
+#include "../fractol.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -58,27 +58,5 @@ int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == XK_Escape)
 		close_window(vars);
-	return (0);
-}
-
-int main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	if (!vars.mlx)
-		return (1);
-	vars.win = mlx_new_window(vars.mlx, WIDTH, HEIGHT, "Hello world!");
-	if (!vars.win)
-	{
-		free(vars.mlx);
-		return (1);
-	}
-	mlx_hook(vars.win, ON_DESTROY, 0, close_window, &vars);
-	mlx_key_hook(vars.win, key_hook, &vars);
-	vars.img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
-	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
-	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
-	mlx_loop(vars.mlx);
 	return (0);
 }
