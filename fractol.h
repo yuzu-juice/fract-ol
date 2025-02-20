@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/10 15:52:09 by takitaga          #+#    #+#             */
+/*   Updated: 2025/02/20 01:58:44 by takitaga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,3 +55,5 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		render_next_frame(t_vars *vars);
 int		close_window(t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);
+int 	julia(void);
+int		mandelbrot(void);

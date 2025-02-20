@@ -1,6 +1,8 @@
 NAME	= fractol
 SRCS	= src/main.c \
-		src/fractol.c
+		src/fractol.c \
+		src/mandelbrot.c \
+		src/julia.c \
 
 OBJS	= $(SRCS:.c=.o)
 HEADERS	= fractol.h
@@ -21,7 +23,7 @@ all: $(NAME)
 
 $(NAME): $(MINILIBX) $(OBJS)
 	cd "$(PWD)/../libft" && make && cd ..
-	$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJS) $(LIBFT) $(LDFLAGS) $(LIBS) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) $(INCLUDES) -Imlx_linux -O3 -c $< -o $@

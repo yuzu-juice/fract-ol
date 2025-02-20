@@ -7,3 +7,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libbsd-dev \
     valgrind \
     && rm -rf /var/lib/apt/lists/*
+
+# Clone libft repository
+RUN git clone https://github.com/yuzu-juice/libft /workspaces/libft
