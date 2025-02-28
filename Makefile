@@ -10,7 +10,7 @@ CC	= cc
 CFLAGS	= -Wall -Wextra -Werror -O2
 LIBFT	= ../libft/libft.a
 
-MINILIBX_URL := https://cdn.intra.42.fr/document/document/28352/minilibx-linux.tgz
+MINILIBX_URL := https://cdn.intra.42.fr/document/document/31138/minilibx-linux.tgz
 MINILIBX_TAR_GZ := minilibx-linux.tgz
 MINILIBX_DIR := ./minilibx-linux
 MINILIBX := $(MINILIBX_DIR)/libmlx.a

@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 			print_error();
 			return (1);
 		}
-		return (mandelbrot());
+		return (handler());
 	}
 	if (ft_strncmp(argv[1], "Julia", 5) == 0)
 	{
