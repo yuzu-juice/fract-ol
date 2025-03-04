@@ -14,8 +14,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <X11/keysym.h>
+#include <math.h>
+#include <complex.h>
 #include "minilibx-linux/mlx.h"
-# include "../libft/libft.h"
+#include "../libft/libft.h"
 
 #define WIDTH 1920 / 2
 #define HEIGHT 1080 / 2
@@ -42,6 +44,7 @@ typedef struct	s_data {
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
+	void 	(*fractal_func)(struct s_vars *);
 
 	t_data	img;
 }			t_vars;
@@ -51,9 +54,17 @@ typedef struct	s_complex {
 	double	im;
 }			t_complex;
 
+typedef struct s_coordinates {
+	int	x;
+	int	y;
+}			t_coordinates;
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		render_next_frame(t_vars *vars);
 int		close_window(t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);
 int 	julia(void);
 int		mandelbrot(void);
+void	calc_mandelbrot(t_vars *vars);
+t_complex complex_add(t_complex z, t_complex c);
+t_complex complex_square(t_complex z);

@@ -1,8 +1,9 @@
 NAME	= fractol
 SRCS	= src/main.c \
-		src/fractol.c \
 		src/mandelbrot.c \
 		src/julia.c \
+		src/mlx_utils.c \
+		src/math_utils.c \
 
 OBJS	= $(SRCS:.c=.o)
 HEADERS	= fractol.h
