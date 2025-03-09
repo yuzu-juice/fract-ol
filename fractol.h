@@ -26,8 +26,8 @@
 enum {
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
+	ON_MOUSEUP = 4,
+	ON_MOUSEDOWN= 5,
 	ON_MOUSEMOVE = 6,
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
@@ -45,6 +45,7 @@ typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
 	void 	(*fractal_func)(struct s_vars *);
+	double	zoom;
 
 	t_data	img;
 }			t_vars;
@@ -63,6 +64,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		render_next_frame(t_vars *vars);
 int		close_window(t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);
+int	mouse_handler(int button, int x, int y, t_vars *vars);
 int 	julia(void);
 int		mandelbrot(void);
 void	calc_mandelbrot(t_vars *vars);

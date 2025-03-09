@@ -25,8 +25,10 @@ int	mandelbrot(void)
 		free(vars.mlx);
 		return (1);
 	}
+	vars.zoom = 1.0;
 	mlx_hook(vars.win, ON_DESTROY, 0, close_window, &vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
+	mlx_mouse_hook(vars.win, mouse_handler, &vars);
 	vars.img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
 	vars.fractal_func = calc_mandelbrot;
@@ -34,7 +36,6 @@ int	mandelbrot(void)
 	mlx_loop(vars.mlx);
 	return (0);
 }
-
 
 void	calc_mandelbrot(t_vars *vars)
 {
@@ -46,7 +47,7 @@ void	calc_mandelbrot(t_vars *vars)
 
 	c.re = 0.4;
 	c.im = -0.325;
-	scale = 4.0 / WIDTH;
+	scale = 4.0 / WIDTH / vars->zoom ;
 	coordinate.x = 0;
 	while (coordinate.x < WIDTH)
 	{

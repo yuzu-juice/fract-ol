@@ -5,6 +5,7 @@
         "stddef.h": "c",
         "fractol.h": "c",
         "libft.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "random": "c"
     }
 }

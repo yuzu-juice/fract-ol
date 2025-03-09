@@ -25,6 +25,19 @@ int	close_window(t_vars *vars)
 int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == XK_Escape)
+	{
 		close_window(vars);
+	}
+	return (0);
+}
+
+int	mouse_handler(int button, int x, int y, t_vars *vars)
+{
+	(void)x;
+	(void)y;
+	if (button == ON_MOUSEUP)
+		vars->zoom *= 1.2;
+	if (button == ON_MOUSEDOWN)
+		vars->zoom *= 0.8;
 	return (0);
 }
