@@ -30,8 +30,8 @@ static void	calc_mandelbrot(t_vars *vars)
 		coordinate.y = 0;
 		while (coordinate.y < HEIGHT)
 		{
-			z.re = (coordinate.x - WIDTH / 2.0) * scale;
-			z.im = (coordinate.y - HEIGHT / 2.0) * scale;
+			z.re = (coordinate.x - WIDTH / 2.0) * scale + vars->shift_x;
+			z.im = (coordinate.y - HEIGHT / 2.0) * scale - vars->shift_y;
 			i = 0;
 			while ((z.re * z.re) + (z.im * z.im) < 2 && i < MAXITER)
 			{
@@ -64,6 +64,8 @@ int	mandelbrot(void)
 		return (1);
 	}
 	vars.zoom = 1.0;
+	vars.shift_x = 0.0;
+	vars.shift_y = 0.0;
 	mlx_hook(vars.win, ON_DESTROY, 0, close_window, &vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_mouse_hook(vars.win, mouse_handler, &vars);
@@ -71,7 +73,6 @@ int	mandelbrot(void)
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
 	vars.fractal_func = calc_mandelbrot;
 	render_next_frame(&vars);
-	mlx_loop_hook(vars.mlx, NULL, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

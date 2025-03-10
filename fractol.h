@@ -21,7 +21,7 @@
 
 #define WIDTH 1920 / 2
 #define HEIGHT 1080 / 2
-#define MAXITER 1000
+#define MAXITER 200
 
 enum {
 	ON_KEYDOWN = 2,

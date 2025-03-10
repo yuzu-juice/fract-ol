@@ -26,25 +26,15 @@ int	key_hook(int keycode, t_vars *vars)
 {
     double shift_step = 0.1 / vars->zoom;
     if (keycode == XK_Escape)
-    {
         close_window(vars);
-    }
     else if (keycode == XK_Left)
-    {
         vars->shift_x -= shift_step;
-    }
     else if (keycode == XK_Right)
-		{
         vars->shift_x += shift_step;
-    }
     else if (keycode == XK_Up)
-    {
         vars->shift_y += shift_step;
-    }
     else if (keycode == XK_Down)
-    {
         vars->shift_y -= shift_step;
-    }
     render_next_frame(vars);
     return (0);
 }
