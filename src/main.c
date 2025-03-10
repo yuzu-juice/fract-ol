@@ -12,36 +12,27 @@
 
 #include "../fractol.h"
 
-void	print_error(void)
+int	print_error(void)
 {
 	ft_putstr_fd("Usage: ./fractol [Mandelbrot|Julia]\n", 2);
+	return (1);
 }
 
 int main(int argc, char *argv[])
 {
 	if (argc == 1)
-	{
-		print_error();
-		return (1);
-	}
+		return (print_error());
 	if (ft_strncmp(argv[1], "Mandelbrot", 10) == 0)
 	{
 		if (argc != 2)
-		{
-			print_error();
-			return (1);
-		}
+			return (print_error());
 		return (mandelbrot());
 	}
 	if (ft_strncmp(argv[1], "Julia", 5) == 0)
 	{
 		if (argc != 4)
-		{
-			print_error();
-			return (1);
-		}
-		return (julia());
+			return (print_error());
+		return (julia(ft_atoi(argv[2]), ft_atoi(argv[3])));
 	}
-	print_error();
-	return (1);
+	return (print_error());
 }

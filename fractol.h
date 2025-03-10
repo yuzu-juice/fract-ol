@@ -46,6 +46,8 @@ typedef struct	s_vars {
 	void	*win;
 	void 	(*fractal_func)(struct s_vars *);
 	double	zoom;
+	int julia_x;
+	int julia_y;
 
 	t_data	img;
 }			t_vars;
@@ -65,8 +67,7 @@ int		render_next_frame(t_vars *vars);
 int		close_window(t_vars *vars);
 int		key_hook(int keycode, t_vars *vars);
 int	mouse_handler(int button, int x, int y, t_vars *vars);
-int 	julia(void);
+int 	julia(int x, int y);
 int		mandelbrot(void);
-void	calc_mandelbrot(t_vars *vars);
 t_complex complex_add(t_complex z, t_complex c);
 t_complex complex_square(t_complex z);
