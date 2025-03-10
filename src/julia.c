@@ -33,7 +33,7 @@ static void	calc_julia(t_vars *vars)
 			z.re = vars->julia_x / 1000 + (coordinate.x - WIDTH / 2.0) * scale;
 			z.im = vars->julia_y / 1000 + (coordinate.y - HEIGHT / 2.0) * scale;
 			i = 0;
-			while (hypot(z.re, z.im) < 2 && i < MAXITER)
+			while ((z.re * z.re) + (z.im * z.im) < 4  && i < MAXITER)
 			{
 				z = complex_square(z);
 				z = complex_add(z, c);

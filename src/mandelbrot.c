@@ -33,7 +33,7 @@ static void	calc_mandelbrot(t_vars *vars)
 			z.re = (coordinate.x - WIDTH / 2.0) * scale;
 			z.im = (coordinate.y - HEIGHT / 2.0) * scale;
 			i = 0;
-			while (hypot(z.re, z.im) < 2 && i < MAXITER)
+			while ((z.re * z.re) + (z.im * z.im) < 2 && i < MAXITER)
 			{
 				z = complex_square(z);
 				z = complex_add(z, c);
