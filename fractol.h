@@ -73,7 +73,6 @@ typedef struct s_coordinates {
 
 void		init_fractol(t_vars *vars);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void		calc_pixel(t_vars *vars, t_complex c, int x, int y);
 int			render_next_frame(t_vars *vars);
 int			close_window(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);

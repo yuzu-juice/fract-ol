@@ -12,13 +12,34 @@
 
 #include "../fractol.h"
 
+static void	calc_pixel(t_vars *vars, int x, int y)
+{
+	t_complex	z;
+	double		scale;
+	int			i;
+	int			color;
+
+	i = 0;
+	scale = vars->scale;
+	z.re = (x - WIDTH / 2.0) * scale + vars->shift_x;
+	z.im = (y - HEIGHT / 2.0) * scale + vars->shift_y;
+	while ((z.re * z.re) + (z.im * z.im) < 2 && i < MAXITER)
+	{
+		z = complex_square(z);
+		z = complex_add(z, z);
+		i++;
+	}
+	if (i == MAXITER)
+	color = 0xFFFFFF;
+	else
+	color = i * 0xFF00FF / MAXITER;
+	my_mlx_pixel_put(&vars->img, x, y, color);
+}
+
 static void	calc_mandelbrot(t_vars *vars)
 {
-	t_complex		c;
 	t_coordinates	coordinate;
 
-	c.re = 0;
-	c.im = 0;
 	vars->scale = 4.0 / WIDTH / vars->zoom ;
 	coordinate.x = 0;
 	while (coordinate.x < WIDTH)
@@ -26,7 +47,7 @@ static void	calc_mandelbrot(t_vars *vars)
 		coordinate.y = 0;
 		while (coordinate.y < HEIGHT)
 		{
-			calc_pixel(vars, c, coordinate.x, coordinate.y);
+			calc_pixel(vars, coordinate.x, coordinate.y);
 			coordinate.y++;
 		}
 		coordinate.x++;
