@@ -14,12 +14,12 @@
 
 static void	calc_mandelbrot(t_vars *vars)
 {
-	t_complex	z;
-	t_complex	c;
-	t_coordinates coordinate;
-	int		i;
-	double		scale;
-	int	color;
+	t_complex		z;
+	t_complex		c;
+	t_coordinates	coordinate;
+	int				i;
+	double			scale;
+	int				color;
 
 	c.re = 0.4;
 	c.im = -0.325;
@@ -31,7 +31,7 @@ static void	calc_mandelbrot(t_vars *vars)
 		while (coordinate.y < HEIGHT)
 		{
 			z.re = (coordinate.x - WIDTH / 2.0) * scale + vars->shift_x;
-			z.im = (coordinate.y - HEIGHT / 2.0) * scale - vars->shift_y;
+			z.im = (coordinate.y - HEIGHT / 2.0) * scale + vars->shift_y;
 			i = 0;
 			while ((z.re * z.re) + (z.im * z.im) < 2 && i < MAXITER)
 			{

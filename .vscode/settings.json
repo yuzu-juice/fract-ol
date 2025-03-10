@@ -6,6 +6,7 @@
         "fractol.h": "c",
         "libft.h": "c",
         "stdio.h": "c",
-        "random": "c"
+        "random": "c",
+        "keysym.h": "c"
     }
 }

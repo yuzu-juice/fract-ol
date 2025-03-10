@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/10 19:12:11 by takitaga          #+#    #+#             */
+/*   Updated: 2025/03/10 19:27:56 by takitaga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../fractol.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -5,7 +17,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	render_next_frame(t_vars *vars)
@@ -24,19 +36,21 @@ int	close_window(t_vars *vars)
 
 int	key_hook(int keycode, t_vars *vars)
 {
-    double shift_step = 0.1 / vars->zoom;
-    if (keycode == XK_Escape)
-        close_window(vars);
-    else if (keycode == XK_Left)
-        vars->shift_x -= shift_step;
-    else if (keycode == XK_Right)
-        vars->shift_x += shift_step;
-    else if (keycode == XK_Up)
-        vars->shift_y += shift_step;
-    else if (keycode == XK_Down)
-        vars->shift_y -= shift_step;
-    render_next_frame(vars);
-    return (0);
+	double	shift_step;
+
+	shift_step = 0.1 / vars->zoom;
+	if (keycode == XK_Escape)
+		close_window(vars);
+	else if (keycode == XK_Left)
+		vars->shift_x -= shift_step;
+	else if (keycode == XK_Right)
+		vars->shift_x += shift_step;
+	else if (keycode == XK_Up)
+		vars->shift_y -= shift_step;
+	else if (keycode == XK_Down)
+		vars->shift_y += shift_step;
+	render_next_frame(vars);
+	return (0);
 }
 
 int	mouse_handler(int button, int x, int y, t_vars *vars)

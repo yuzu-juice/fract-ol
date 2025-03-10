@@ -10,18 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <X11/keysym.h>
-#include <math.h>
-#include <complex.h>
-#include "minilibx-linux/mlx.h"
-#include "../libft/libft.h"
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
-#define WIDTH 1920 / 2
-#define HEIGHT 1080 / 2
-#define MAXITER 200
+# include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <X11/keysym.h>
+# include <math.h>
+# include <complex.h>
+# include "minilibx-linux/mlx.h"
+# include "../libft/libft.h"
+
+# define WIDTH 960
+# define HEIGHT 540
+# define MAXITER 200
 
 enum {
 	ON_KEYDOWN = 2,
@@ -33,43 +36,48 @@ enum {
 	ON_DESTROY = 17
 };
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*img;
 	char	*addr;
-	int	bits_per_pixel;
-	int	line_length;
-	int	endian;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }			t_data;
 
-typedef struct	s_vars {
+typedef struct s_vars
+{
 	void	*mlx;
 	void	*win;
-	void 	(*fractal_func)(struct s_vars *);
+	void	(*fractal_func)(struct s_vars*);
 	double	zoom;
-	int julia_x;
-	int julia_y;
-	double shift_x;
-	double shift_y;
+	int		julia_x;
+	int		julia_y;
+	double	shift_x;
+	double	shift_y;
 
 	t_data	img;
 }			t_vars;
 
-typedef struct	s_complex {
+typedef struct s_complex
+{
 	double	re;
 	double	im;
 }			t_complex;
 
 typedef struct s_coordinates {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 }			t_coordinates;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int		render_next_frame(t_vars *vars);
-int		close_window(t_vars *vars);
-int		key_hook(int keycode, t_vars *vars);
-int	mouse_handler(int button, int x, int y, t_vars *vars);
-int 	julia(int x, int y);
-int		mandelbrot(void);
-t_complex complex_add(t_complex z, t_complex c);
-t_complex complex_square(t_complex z);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int			render_next_frame(t_vars *vars);
+int			close_window(t_vars *vars);
+int			key_hook(int keycode, t_vars *vars);
+int			mouse_handler(int button, int x, int y, t_vars *vars);
+int			julia(int x, int y);
+int			mandelbrot(void);
+t_complex	complex_add(t_complex z, t_complex c);
+t_complex	complex_square(t_complex z);
+
+#endif
