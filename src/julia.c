@@ -14,36 +14,19 @@
 
 static void	calc_julia(t_vars *vars)
 {
-	t_complex	z;
-	t_complex	c;
-	t_coordinates coordinate;
-	int		i;
-	double		scale;
-	int	color;
+	t_complex		c;
+	t_coordinates	coordinate;
 
-	c.re = 0.4;
-	c.im = -0.325;
-	scale = 4.0 / WIDTH / vars->zoom ;
+	c.re = 0;
+	c.im = 0;
+	vars->scale = 4.0 / WIDTH / vars->zoom ;
 	coordinate.x = 0;
 	while (coordinate.x < WIDTH)
 	{
 		coordinate.y = 0;
 		while (coordinate.y < HEIGHT)
 		{
-			z.re = vars->julia_x / 1000 + (coordinate.x - WIDTH / 2.0) * scale  + vars->shift_x;
-			z.im = vars->julia_y / 1000 + (coordinate.y - HEIGHT / 2.0) * scale  + vars->shift_y;
-			i = 0;
-			while ((z.re * z.re) + (z.im * z.im) < 4 && i < MAXITER)
-			{
-				z = complex_square(z);
-				z = complex_add(z, c);
-				i++;
-			}
-			if (i == MAXITER)
-				color = 0xFFFFFF;
-			else
-				color = i * 0xFF00FF / MAXITER;
-			my_mlx_pixel_put(&vars->img, coordinate.x, coordinate.y, color);
+			calc_pixel(vars, c, coordinate.x, coordinate.y);
 			coordinate.y++;
 		}
 		coordinate.x++;

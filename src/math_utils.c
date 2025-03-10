@@ -25,7 +25,7 @@ t_complex	complex_square(t_complex z)
 {
 	t_complex	result;
 
-	result.re = z.re * z.re - z.im * z.im;
+	result.re = pow(z.re, 2) - pow(z.im, 2);
 	result.im = 2 * z.re * z.im;
 	return (result);
 }

@@ -20,6 +20,30 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	calc_pixel(t_vars *vars, t_complex c, int x, int y)
+{
+	t_complex	z;
+	double		scale;
+	int			i;
+	int			color;
+
+	i = 0;
+	scale = vars->scale;
+	z.re = (x - WIDTH / 2.0) * scale + vars->shift_x;
+	z.im = (y - HEIGHT / 2.0) * scale + vars->shift_y;
+	while ((z.re * z.re) + (z.im * z.im) < 2 && i < MAXITER)
+	{
+		z = complex_square(z);
+		z = complex_add(z, c);
+		i++;
+	}
+	if (i == MAXITER)
+	color = 0xFFFFFF;
+	else
+	color = i * 0xFF00FF / MAXITER;
+	my_mlx_pixel_put(&vars->img, x, y, color);
+}
+
 int	render_next_frame(t_vars *vars)
 {
 	vars->fractal_func(vars);
