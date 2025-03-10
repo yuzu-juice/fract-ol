@@ -70,6 +70,7 @@ typedef struct s_coordinates {
 	int		y;
 }			t_coordinates;
 
+void		init_fractol(t_vars *vars);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			render_next_frame(t_vars *vars);
 int			close_window(t_vars *vars);
@@ -79,5 +80,7 @@ int			julia(int x, int y);
 int			mandelbrot(void);
 t_complex	complex_add(t_complex z, t_complex c);
 t_complex	complex_square(t_complex z);
+int			print_args_error(void);
+int			print_error(void);
 
 #endif

@@ -54,20 +54,9 @@ int	julia(int x, int y)
 {
 	t_vars	vars;
 
-	vars.mlx = mlx_init();
-	if (!vars.mlx)
-		return (1);
-	vars.win = mlx_new_window(vars.mlx, WIDTH, HEIGHT, "Julia");
-	if (!vars.win)
-	{
-		free(vars.mlx);
-		return (1);
-	}
-	vars.zoom = 1.0;
+	init_fractol(&vars);
 	vars.julia_x = x;
 	vars.julia_y = y;
-	vars.shift_x = 0.0;
-	vars.shift_y = 0.0;
 	mlx_hook(vars.win, ON_DESTROY, 0, close_window, &vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_mouse_hook(vars.win, mouse_handler, &vars);

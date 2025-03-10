@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 15:08:32 by takitaga          #+#    #+#             */
-/*   Updated: 2025/02/20 01:56:16 by takitaga         ###   ########.fr       */
+/*   Created: 2025/03/10 19:42:27 by takitaga          #+#    #+#             */
+/*   Updated: 2025/03/10 19:42:37 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-int main(int argc, char *argv[])
+void    init_fractol(t_vars *vars)
 {
-	if (argc == 1)
-		return (print_args_error());
-	if (ft_strncmp(argv[1], "Mandelbrot", 10) == 0)
+	vars->mlx = mlx_init();
+	if (!vars->mlx)
 	{
-		if (argc != 2)
-			return (print_args_error());
-		return (mandelbrot());
+		print_error();
+		exit(1);
 	}
-	if (ft_strncmp(argv[1], "Julia", 5) == 0)
+	vars->win = mlx_new_window(vars->mlx, WIDTH, HEIGHT, "Julia");
+	if (!vars->win)
 	{
-		if (argc != 4)
-			return (print_args_error());
-		return (julia(ft_atoi(argv[2]), ft_atoi(argv[3])));
+		free(vars->mlx);
+		print_error();
+		exit(1);
 	}
-	return (print_args_error());
+	vars->zoom = 1.0;
+	vars->shift_x = 0.0;
+	vars->shift_y = 0.0;
 }
