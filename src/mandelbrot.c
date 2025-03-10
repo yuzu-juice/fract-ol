@@ -70,7 +70,8 @@ int	mandelbrot(void)
 	vars.img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
 	vars.fractal_func = calc_mandelbrot;
-	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
+	render_next_frame(&vars);
+	mlx_loop_hook(vars.mlx, NULL, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

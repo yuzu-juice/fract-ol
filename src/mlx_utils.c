@@ -24,11 +24,29 @@ int	close_window(t_vars *vars)
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	if (keycode == XK_Escape)
-	{
-		close_window(vars);
-	}
-	return (0);
+    double shift_step = 0.1 / vars->zoom;
+    if (keycode == XK_Escape)
+    {
+        close_window(vars);
+    }
+    else if (keycode == XK_Left)
+    {
+        vars->shift_x -= shift_step;
+    }
+    else if (keycode == XK_Right)
+		{
+        vars->shift_x += shift_step;
+    }
+    else if (keycode == XK_Up)
+    {
+        vars->shift_y += shift_step;
+    }
+    else if (keycode == XK_Down)
+    {
+        vars->shift_y -= shift_step;
+    }
+    render_next_frame(vars);
+    return (0);
 }
 
 int	mouse_handler(int button, int x, int y, t_vars *vars)
@@ -39,5 +57,6 @@ int	mouse_handler(int button, int x, int y, t_vars *vars)
 		vars->zoom *= 1.2;
 	if (button == ON_MOUSEDOWN)
 		vars->zoom *= 0.8;
+	render_next_frame(vars);
 	return (0);
 }

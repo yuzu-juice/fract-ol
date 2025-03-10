@@ -48,6 +48,8 @@ typedef struct	s_vars {
 	double	zoom;
 	int julia_x;
 	int julia_y;
+	double shift_x;
+	double shift_y;
 
 	t_data	img;
 }			t_vars;
