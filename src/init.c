@@ -27,6 +27,13 @@ void	init_fractol(t_vars *vars)
 		print_error();
 		exit(1);
 	}
+	vars->img.img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
+	if (!vars->img.img)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		print_error();
+		exit(1);
+	}
 	vars->zoom = 1.0;
 	vars->shift_x = 0.0;
 	vars->shift_y = 0.0;

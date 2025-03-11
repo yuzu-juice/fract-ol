@@ -65,7 +65,6 @@ int	mandelbrot(void)
 	mlx_hook(vars.win, ON_DESTROY, 0, close_window, &vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_mouse_hook(vars.win, mouse_handler, &vars);
-	vars.img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
 	vars.img.addr = mlx_get_data_addr(
 			vars.img.img,
 			&vars.img.bits_per_pixel,
