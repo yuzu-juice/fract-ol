@@ -26,7 +26,8 @@
 # define HEIGHT 540
 # define MAXITER 200
 
-enum {
+enum
+{
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
 	ON_MOUSEUP = 4,
@@ -66,7 +67,8 @@ typedef struct s_complex
 	double	im;
 }			t_complex;
 
-typedef struct s_coordinates {
+typedef struct s_coordinates
+{
 	int		x;
 	int		y;
 }			t_coordinates;

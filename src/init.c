@@ -12,7 +12,7 @@
 
 #include "../fractol.h"
 
-void    init_fractol(t_vars *vars)
+void	init_fractol(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	if (!vars->mlx)

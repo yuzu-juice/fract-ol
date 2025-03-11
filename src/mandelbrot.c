@@ -15,24 +15,27 @@
 static void	calc_pixel(t_vars *vars, int x, int y)
 {
 	t_complex	z;
+	t_complex	c;
 	double		scale;
 	int			i;
 	int			color;
 
 	i = 0;
 	scale = vars->scale;
-	z.re = (x - WIDTH / 2.0) * scale + vars->shift_x;
-	z.im = (y - HEIGHT / 2.0) * scale + vars->shift_y;
+	c.re = (x - WIDTH / 2.0) * scale + vars->shift_x;
+	c.im = (y - HEIGHT / 2.0) * scale + vars->shift_y;
+	z.re = 0;
+	z.im = 0;
 	while ((z.re * z.re) + (z.im * z.im) < 2 && i < MAXITER)
 	{
 		z = complex_square(z);
-		z = complex_add(z, z);
+		z = complex_add(z, c);
 		i++;
 	}
 	if (i == MAXITER)
-	color = 0xFFFFFF;
+		color = 0xFFFFFF;
 	else
-	color = i * 0xFF00FF / MAXITER;
+		color = i * 0xFF00FF / MAXITER;
 	my_mlx_pixel_put(&vars->img, x, y, color);
 }
 
@@ -63,7 +66,12 @@ int	mandelbrot(void)
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_mouse_hook(vars.win, mouse_handler, &vars);
 	vars.img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
-	vars.img.addr = mlx_get_data_addr(vars.img.img, &vars.img.bits_per_pixel, &vars.img.line_length, &vars.img.endian);
+	vars.img.addr = mlx_get_data_addr(
+			vars.img.img,
+			&vars.img.bits_per_pixel,
+			&vars.img.line_length,
+			&vars.img.endian
+			);
 	vars.fractal_func = calc_mandelbrot;
 	render_next_frame(&vars);
 	mlx_loop(vars.mlx);
