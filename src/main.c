@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 	{
 		if (argc != 4)
 			return (print_args_error());
-		return (julia(ft_atoi(argv[2]), ft_atoi(argv[3])));
+		return (julia(ft_atof(argv[2]), ft_atof(argv[3])));
 	}
 	return (print_args_error());
 }

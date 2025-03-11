@@ -1,7 +1,7 @@
 NAME	= fractol
 SRCS	= src/main.c \
 		src/init.c \
-		src/error.c \
+		src/errors.c \
 		src/mandelbrot.c \
 		src/julia.c \
 		src/mlx_utils.c \

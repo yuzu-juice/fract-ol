@@ -15,7 +15,12 @@
 int	print_args_error(void)
 {
 	ft_putstr_fd("Usage  : ./fractol [Mandelbrot|Julia value1 value2]\n", 2);
-	ft_putstr_fd("Example: ./fractol Julia n m\n", 2);
+	ft_putstr_fd("Example1: ./fractol Mandelbrot\n", 2);
+	ft_putstr_fd("Example2: ./fractol Julia -0.11 0.67\n", 2);
+	ft_putstr_fd("Example3: ./fractol Julia -0.12 0.74\n", 2);
+	ft_putstr_fd("Example4: ./fractol Julia -0.15652 1.03225\n", 2);
+	ft_putstr_fd("Example5: ./fractol Julia -0.39054 -0.58679\n", 2);
+	ft_putstr_fd("Example6: ./fractol Julia 0.11031 -0.67037\n", 2);
 	return (1);
 }
 

@@ -57,7 +57,7 @@ static void	calc_julia(t_vars *vars)
 	}
 }
 
-int	julia(int x, int y)
+int	julia(double x, double y)
 {
 	t_vars	vars;
 
