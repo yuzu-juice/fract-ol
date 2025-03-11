@@ -33,6 +33,7 @@ int	close_window(t_vars *vars)
 {
 	mlx_destroy_image(vars->mlx, vars->img.img);
 	mlx_destroy_window(vars->mlx, vars->win);
+	free(vars->mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
