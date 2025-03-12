@@ -26,7 +26,7 @@ static void	calc_pixel(t_vars *vars, int x, int y)
 	c.im = (y - HEIGHT / 2.0) * scale + vars->shift_y;
 	z.re = 0;
 	z.im = 0;
-	while ((z.re * z.re) + (z.im * z.im) < 2 && i < MAXITER)
+	while ((z.re * z.re) + (z.im * z.im) < 4 && i < MAXITER)
 	{
 		z = complex_square(z);
 		z = complex_add(z, c);
