@@ -20,7 +20,7 @@ void	init_fractol(t_vars *vars)
 		print_error();
 		exit(1);
 	}
-	vars->win = mlx_new_window(vars->mlx, WIDTH, HEIGHT, "Julia");
+	vars->win = mlx_new_window(vars->mlx, WIDTH, HEIGHT, "fract-ol");
 	if (!vars->win)
 	{
 		free(vars->mlx);
