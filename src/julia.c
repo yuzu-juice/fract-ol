@@ -22,7 +22,7 @@ static void	calc_pixel(t_vars *vars, int x, int y)
 
 	i = 0;
 	scale = vars->scale;
-	z.re = (x - WIDTH / 2.0) * scale + vars->shift_x;
+	z.re = -((x - WIDTH / 2.0) * scale + vars->shift_x);
 	z.im = (y - HEIGHT / 2.0) * scale + vars->shift_y;
 	c.re = vars->julia_x;
 	c.im = vars->julia_y;
