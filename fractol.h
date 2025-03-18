@@ -24,16 +24,11 @@
 
 # define WIDTH 960
 # define HEIGHT 540
-# define MAXITER 200
 
 enum
 {
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
 	ON_MOUSEUP = 4,
 	ON_MOUSEDOWN= 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
 	ON_DESTROY = 17
 };
 
@@ -57,6 +52,7 @@ typedef struct s_vars
 	double	scale;
 	double	shift_x;
 	double	shift_y;
+	int		max_iter;
 
 	t_data	img;
 }			t_vars;
@@ -85,5 +81,6 @@ t_complex	complex_add(t_complex z, t_complex c);
 t_complex	complex_square(t_complex z);
 int			print_args_error(void);
 int			print_error(void);
+double		ft_atof(const char *nptr);
 
 #endif

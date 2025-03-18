@@ -54,6 +54,10 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->shift_y -= shift_step;
 	else if (keycode == XK_Down)
 		vars->shift_y += shift_step;
+	else if (keycode == XK_period && vars->max_iter < 1000)
+		vars->max_iter += 10;
+	else if (keycode == XK_comma && vars->max_iter > 10)
+		vars->max_iter -= 10;
 	render_next_frame(vars);
 	return (0);
 }

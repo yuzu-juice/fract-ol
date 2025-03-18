@@ -6,6 +6,7 @@ SRCS	= src/main.c \
 		src/julia.c \
 		src/mlx_utils.c \
 		src/math_utils.c \
+		src/ft_atof.c
 
 OBJS	= $(SRCS:.c=.o)
 HEADERS	= fractol.h

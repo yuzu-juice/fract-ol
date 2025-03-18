@@ -37,4 +37,5 @@ void	init_fractol(t_vars *vars)
 	vars->zoom = 1.0;
 	vars->shift_x = 0.0;
 	vars->shift_y = 0.0;
+	vars->max_iter = 20;
 }

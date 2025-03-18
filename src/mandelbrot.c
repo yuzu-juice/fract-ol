@@ -26,16 +26,16 @@ static void	calc_pixel(t_vars *vars, int x, int y)
 	c.im = (y - HEIGHT / 2.0) * scale + vars->shift_y;
 	z.re = 0;
 	z.im = 0;
-	while ((z.re * z.re) + (z.im * z.im) < 4 && i < MAXITER)
+	while ((z.re * z.re) + (z.im * z.im) < 4 && i < vars->max_iter)
 	{
 		z = complex_square(z);
 		z = complex_add(z, c);
 		i++;
 	}
-	if (i == MAXITER)
+	if (i == vars->max_iter)
 		color = 0xFFFFFF;
 	else
-		color = i * 0xFF00FF / MAXITER;
+		color = i * 0xFF00FF / vars->max_iter;
 	my_mlx_pixel_put(&vars->img, x, y, color);
 }
 
