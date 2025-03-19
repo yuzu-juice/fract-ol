@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:52:09 by takitaga          #+#    #+#             */
-/*   Updated: 2025/02/20 01:58:44 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:25:38 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_vars
 	double	scale;
 	double	shift_x;
 	double	shift_y;
+	int		color;
 	int		max_iter;
 
 	t_data	img;

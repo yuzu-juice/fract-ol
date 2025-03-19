@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 19:12:11 by takitaga          #+#    #+#             */
-/*   Updated: 2025/03/10 19:27:56 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:33:04 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->shift_y -= shift_step;
 	else if (keycode == XK_Down)
 		vars->shift_y += shift_step;
-	else if (keycode == XK_period && vars->max_iter < 1000)
-		vars->max_iter += 10;
-	else if (keycode == XK_comma && vars->max_iter > 10)
-		vars->max_iter -= 10;
+	else if (keycode == XK_period && vars->color <= 0xFFFFFF)
+		vars->color = (vars->color + 0x101010) % 0xFFFFFF;
+	else if (keycode == XK_comma && vars->color >= 0)
+		vars->color = (vars->color - 0x101010) % 0xFFFFFF;
 	render_next_frame(vars);
 	return (0);
 }
@@ -67,9 +67,15 @@ int	mouse_handler(int button, int x, int y, t_vars *vars)
 	(void)x;
 	(void)y;
 	if (button == ON_MOUSEUP)
+	{
+		vars->max_iter += 3;
 		vars->zoom *= 1.2;
+	}
 	if (button == ON_MOUSEDOWN)
+	{
+		vars->max_iter -= 3;
 		vars->zoom *= 0.8;
+	}
 	render_next_frame(vars);
 	return (0);
 }

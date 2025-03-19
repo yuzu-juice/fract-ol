@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 01:57:26 by takitaga          #+#    #+#             */
-/*   Updated: 2025/02/20 01:58:57 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:26:10 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	calc_pixel(t_vars *vars, int x, int y)
 	if (i == vars->max_iter)
 		color = 0xFFFFFF;
 	else
-		color = i * 0xFF00FF / vars->max_iter;
+		color = i * vars->color / 100;
 	my_mlx_pixel_put(&vars->img, x, y, color);
 }
 

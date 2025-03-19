@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: takitaga  <takitaga@student.42tokyo.>      +#+  +:+       +#+        */
+/*   By: takitaga <takitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 19:42:27 by takitaga          #+#    #+#             */
-/*   Updated: 2025/03/10 19:42:37 by takitaga         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:30:08 by takitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	init_fractol(t_vars *vars)
 	vars->zoom = 1.0;
 	vars->shift_x = 0.0;
 	vars->shift_y = 0.0;
+	vars->color = 0xFFCCFF;
 	vars->max_iter = 20;
 }
